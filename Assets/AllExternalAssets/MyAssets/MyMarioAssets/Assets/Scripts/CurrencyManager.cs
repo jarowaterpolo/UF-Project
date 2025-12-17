@@ -1,10 +1,13 @@
+using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CurrencyManager : MonoBehaviour
 {
-    public AudioSource[] CoinAudio;
+    public List<AudioSource> CoinAudio;
+    [SerializeField]
     private GameObject[] CoinAudioObjects;
     public TMP_Text CoinText;
 
@@ -13,8 +16,11 @@ public class CurrencyManager : MonoBehaviour
     public TMP_Text StarsText;
 
     public GameObject Star;
+
+    public static bool ForceAudio = true;
     public void Start()
     {
+        //DontDestroyOnLoad();
         GetAudio();
     }
     private void OnCollisionEnter(Collision collision)
@@ -26,7 +32,7 @@ public class CurrencyManager : MonoBehaviour
             {
                 GameManager.Coins += 1;
             }
-            CoinAudio[Random.Range(0,CoinAudio.Length)].Play();
+            CoinAudio[Random.Range(0,CoinAudio.Count)].Play();
         }
 
         if (collision.gameObject.tag == "Trader")
@@ -56,14 +62,18 @@ public class CurrencyManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateText();
-        int i = 0;
-        if (i != SceneManager.GetActiveScene().buildIndex)
+        if (CoinAudio == null)
         {
-            ForceGetAudio();
+
         }
 
-        i = SceneManager.GetActiveScene().buildIndex;
+        UpdateText();
+
+        if (ForceAudio == true)
+        {
+            ForceGetAudio();
+            //GetAudio();
+        }
     }
 
     void UpdateText()
@@ -95,11 +105,13 @@ public class CurrencyManager : MonoBehaviour
 
     void ForceGetAudio()
     {
+        CoinAudio.Clear();
+
         CoinAudioObjects = GameObject.FindGameObjectsWithTag("CoinAudio");
         int i = 0;
         foreach (GameObject gameObject in CoinAudioObjects)
         {
-            CoinAudio[i] = CoinAudioObjects[i].GetComponent<AudioSource>();
+            CoinAudio.Add(CoinAudioObjects[i].GetComponent<AudioSource>());
             i++;
         }
 

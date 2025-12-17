@@ -43,6 +43,7 @@ public class EnterPipe : MonoBehaviour
             {
                 PipeEnterSound.Play();
             }
+            CurrencyManager.ForceAudio = true;
             SceneManager.LoadScene(TargetAreaTP);
         }
     }

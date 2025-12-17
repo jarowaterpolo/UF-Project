@@ -1,4 +1,6 @@
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,7 +35,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) 
+        if (instance.DevTPs == null || instance.DevTPs.Any(a => !a))
+        {
+            instance.DevTPs = GameObject.FindGameObjectsWithTag("DevTP");
+        }
+
+        if (instance.Player == null)
+        {
+            instance.Player = GameObject.FindGameObjectWithTag("player");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().buildIndex == 0) 
         {
             DevTP();
         }
@@ -54,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         if (PlaceToTP >= DevTPs.Length) PlaceToTP = 0;
 
-        Player.transform.position = DevTPs[PlaceToTP].transform.position;
+        Player.transform.position = DevTPs[PlaceToTP].transform.position; 
     }
     void DevGainCurrency()
     {
