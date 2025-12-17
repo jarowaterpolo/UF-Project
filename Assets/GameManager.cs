@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (instance.DevTPs == null || instance.DevTPs.Any(a => !a))
+        if (instance.DevTPs == null || instance.DevTPs.Length == 0 || instance.DevTPs.Any(a => !a))
         {
             instance.DevTPs = GameObject.FindGameObjectsWithTag("DevTP");
         }
