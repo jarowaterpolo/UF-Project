@@ -14,12 +14,18 @@ public class OpenGate : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GateUnlock == null)
+        {
+            GameObject gateAudioObject = GameObject.FindGameObjectWithTag("GateAudio");
+            GateUnlock = gateAudioObject.GetComponent<AudioSource>();
+        }
+
         if (IntOpenGate == 5)
         {
             GateOpend = true;
