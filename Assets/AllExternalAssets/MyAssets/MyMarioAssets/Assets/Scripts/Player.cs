@@ -49,12 +49,16 @@ public class Player : MonoBehaviour
 
         //Vector3 movement = new Vector3(xSpd, 0, zSpd) * MVSPD;
         //rb.AddForce(movement);
-        if (xSpd > 0 || zSpd > 0)
+        if (zSpd != 0 )
         {
             Animate();
         }
+        else
+        {
+            DisAnimate();
+        }
 
-        Vector3 movement;
+            Vector3 movement;
         if (Input.GetKey(KeyCode.LeftShift)) 
         {
             movement = transform.forward * zSpd * MVSPD * SprintMult;
@@ -96,6 +100,11 @@ public class Player : MonoBehaviour
     void Animate()
     {
         animator.SetBool("Walking", true);
+    }
+
+    void DisAnimate()
+    {
+        animator.SetBool("Walking", false);
     }
     void CheckGrounded()
     {
