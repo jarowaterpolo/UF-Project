@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             instance.Player = GameObject.FindGameObjectWithTag("player");
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().buildIndex == 0) 
+        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().buildIndex == 1) 
         {
             DevTP();
         }

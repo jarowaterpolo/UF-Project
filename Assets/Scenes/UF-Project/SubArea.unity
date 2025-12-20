@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7c9c2489b657840a190c8afb8912e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetAreaTP: 0
+  TargetAreaTP: 1
   PipeEnterSound: {fileID: 0}
 --- !u!1 &700935521
 GameObject:

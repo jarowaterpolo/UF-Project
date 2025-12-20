@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UF-Project/0.Game.unity
+    path: Assets/Scenes/UF-Project/StartScreen.unity
+    guid: 28490fe1de48e8944a0765e4c1c08fb8
+  - enabled: 1
+    path: Assets/Scenes/UF-Project/Game.unity
     guid: 62572d517d426c84da57eb83dd006caf
   - enabled: 1
-    path: Assets/Scenes/UF-Project/1.SubArea.unity
+    path: Assets/Scenes/UF-Project/SubArea.unity
     guid: 419890bb7684fab4993de3456b9925a0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
